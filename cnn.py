@@ -112,7 +112,7 @@ def train(num_epochs):
             loss = loss_fn(outputs, labels)
             loss.backward()
             optimizer.step()
-            train_loss += loss.cpu().data[0] * images.size(0)
+            train_loss += loss.cpu().item() * images.size(0)
             _, prediction = torch.max(outputs.data, 1)
             train_acc += torch.sum(prediction == labels.data)
 
